@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "MemoX",
+  "version": "1.0",
+  "description": "Automatically logs articles and videos you consume, summarized by a local AI.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "MemoX - Reading & Watch List"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "activeTab",
+    "webNavigation",
+    "storage",
+    "scripting",
+    "offscreen" 
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["llmWorker.js", "popupJs.js", "offscreen.html", "offscreen.js"], 
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';", 
+    "offscreen": "script-src 'self' 'wasm-eval' https://huggingface.co https://cdn-lfs.huggingface.co https://cdn-lfs-us-1.huggingface.co; connect-src 'self' https://huggingface.co https://cdn-lfs.huggingface.co https://cdn-lfs-us-1.huggingface.co blob:;"
+  }
+}
