@@ -1,0 +1,161 @@
+/* Basic Reset & Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 400px;
+    background-color: #f4f7f6;
+    color: #333;
+    overflow-y: auto;
+    min-height: 200px;
+    max-height: 600px;
+    box-sizing: border-box;
+}
+
+/* Overall container for the popup content */
+.container {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Heading style */
+h1 {
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* SLEEK LOADER STYLES */
+#loadingContainer {
+    position: absolute; /* Positions it relative to the nearest positioned ancestor (body/html in this case) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.98); /* Near-opaque white overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    gap: 15px; /* Space between elements within the loader */
+    z-index: 1000; /* Ensure it's on top of other content */
+    border-radius: 8px; /* Matches popup body border-radius if any */
+}
+
+#loadingContainer p {
+    font-size: 1.1em;
+    color: #00796b;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+#progressBarWrapper {
+    width: 80%; /* Width of the progress bar itself */
+    height: 6px; /* Height of the bar */
+    background-color: #e0e0e0; /* Background of the bar track */
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+#loadingPercentage {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Simple CSS Spinner */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1); /* Light grey border */
+    border-left-color: #ffd166; /* Accent color for the spinning part */
+    border-radius: 50%;
+    width: 30px; /* Size of the spinner */
+    height: 30px;
+    animation: spin 1s linear infinite; /* Animation definition */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* END SLEEK LOADER STYLES */
+
+
+/* Input area for text input and buttons */
+.input-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+#summarize-page-button {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+#summarize-page-button:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Answer display area styling */
+#answerWrapper {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#answer {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.answer-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8em;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+#copyAnswer {
+    background-color: #6c757d; /* Gray */
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8em;
+}
+
+#copyAnswer:hover:not(:disabled) {
+    background-color: #5a6268;
+}
+
+/* The essential class to hide elements */
+.hidden {
+    display: none !important;
+}
