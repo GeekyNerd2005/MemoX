@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{{ url_for('static', filename='about_style.css') }}">
+    <title>MemoX</title>
+</head>
+<body>
+    <header class="navbar">
+        <a href="home.html" class="logo">
+            <img src="logo.png" alt="Logo">
+            <span>MemoX</span>
+        </a> 
+         <div class="nav-right">
+            <button class="theme-toggle">🌙</button>
+            <a href="register.html" class="signup">Sign Up</a>
+            <a href="login.html" class="login-btn">Login</a>
+        </div>
+    </header>
+     <header class ="navbar2">
+        <nav class="nav-links">
+            <a href="#">Search</a>
+            <a href="#">Friends</a>
+            <a href="#">Most Followed</a>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Settings</a>
+        </nav>
+        <nav class="nav-right">
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Search here...">
+            </div>
+        </nav>
+    </header>
+    <div class="center-box">
+        <h1>Turning Internet Overload Into Clarity With AI</h1>
+    </div>
+    <div class="center-box2">
+        <p style="font-size: 24px;">We're building advanced AI summarization technology that helps people absorb, process, and retain knowledge more effectively in the digital information age.</p>
+    </div>
+    <div class="stat-section">
+        <div class="stat-box">
+            <h1>0+</h1>
+            <p>Total Users</p>
+        </div>
+         <div class="stat-box">
+            <h1>0+</h1>
+            <p>Tokens Summarized</p>
+        </div>
+    </div>
+    <div class="team">
+        <h1>Our Team</h1>
+        <p style="font-size: 24px;">Hemanga Sarma , Sasmit Jha , Praveen Singh Rana</p>
+    </div>
+    <script>
+        const toggleBtn=document.querySelector('.theme-toggle');
+        const body =document.body;
+
+        if(localStorage.getItem('theme')==='light'){
+            body.classList.add('light-mode');
+            toggleBtn.textContent = '☀️';
+        }
+          toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    const isLight = body.classList.contains('light-mode');
+    toggleBtn.textContent = isLight ? '☀️' : '🌙';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}" />
+  <title>MemoX</title>
+</head>
+<body>
+  <header class="navbar">
+    <a href="{{ url_for('home') }}" class="site-branding">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo" />
+      <span class="site-name">MemoX</span>
+    </a>
+    <div class="nav-right">
+      <button class="theme-toggle">🌙</button>
+      <a href="{{ url_for('register') }}" class="signup">Sign Up</a>
+      <a href="{{ url_for('login') }}" class="login-btn">Login</a>
+    </div>
+  </header>
+
+  <header class="navbar2">
+    <nav class="nav-links">
+      <a href="{{ url_for('view') }}">Search</a>
+      <a href="#">Most Followed</a>
+      <a href="#">Home</a>
+      <a href="{{ url_for('about') }}">About</a>
+      <a href="#">Settings</a>
+    </nav>
+  </header>
+
+    <script>
+    const token = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('user_token='))
+        ?.split('=')[1];
+
+    if (token) {
+        chrome.storage?.local?.set({ token }, () => {
+        console.log("Token saved to extension storage:", token);
+        });
+    }
+    </script>
+
+  <script>
+    const toggleBtn = document.querySelector('.theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+      toggleBtn.textContent = '☀';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      const isLight = body.classList.contains('light-mode');
+      toggleBtn.textContent = isLight ? '☀' : '🌙';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>

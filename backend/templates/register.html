@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='register_style.css') }}">
+    <title>Register</title>
+</head>
+<body>
+    <div class="login-box">
+        <div class="login-header">
+            <a href="{{ url_for('home') }}" class="site-branding">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+                <span class="site-name">MemoX</span>
+            </a>
+            <header>Register</header>
+        </div>
+
+        {% if error %}
+            <p style="color: red; text-align: center;">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" action="/register">
+            <div class="input-box">
+                <input type="text" name="username" class="input-field" placeholder="Name" autocomplete="off" required>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" class="input-field" placeholder="Email" autocomplete="off" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" class="input-field" placeholder="Password" autocomplete="off" required>
+            </div>
+            <div class="input-submit">
+                <button class="submit-btn" type="submit">Sign up</button>
+            </div>
+        </form>
+
+        <div class="sign-up-link">
+            <p>Do have an account? <a href="{{ url_for('login') }}">Sign In</a></p>
+        </div>
+    </div>
+</body>
+</html>
