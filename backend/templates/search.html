@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+     <link rel="stylesheet" href="{{ url_for('static', filename='search_style.css') }}">
+    <script src="search_script.js" defer></script> 
+    <title>MemoX</title>
+</head>
+<body>
+    <header class="navbar">
+        <a href="home.html" class="logo">
+            <img src="logo.png" alt="Logo">
+            <span>MemoX</span>
+        </a> 
+         <div class="nav-right">
+            <button class="theme-toggle">🌙</button>
+            <a href="register.html" class="signup">Sign Up</a>
+            <a href="login.html" class="login-btn">Login</a>
+        </div>
+    </header>
+     <header class ="navbar2">
+        <nav class="nav-links">
+            <a href="search.html">Search</a>
+            <a href="#">Most Followed</a>
+            <a href="#">Home</a>
+            <a href="about.html">About</a>
+            <a href="#">Settings</a>
+        </nav>
+        <nav class="nav-right">
+            
+        </nav>
+    </header>
+    <script>
+        const toggleBtn=document.querySelector('.theme-toggle');
+        const body =document.body;
+
+        if(localStorage.getItem('theme')==='light'){
+            body.classList.add('light-mode');
+            toggleBtn.textContent = '☀️';
+        }
+          toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    const isLight = body.classList.contains('light-mode');
+    toggleBtn.textContent = isLight ? '☀️' : '🌙';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+    </script>
+     <div class="search-wrapper">
+    <label for="search">Search Users</label>
+    <form id="search-form">
+      <input type="search" id="search" name="q" placeholder="Search here…" required data-search>
+      <button type="submit">🔍</button>
+    </form>
+  </div>
+
+  <div class="user-cards" data-user-cards-container></div>
+  <template data-user-template>
+    <div class="card">
+      <div class="header" data-header></div>
+      <div class="body" data-body></div>
+    </div>
+    </template>
+
+
+
+
+</body>
+</html>
